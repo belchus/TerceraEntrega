@@ -84,11 +84,14 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-color: var(--bs-body-bg);
+  background-color: violet;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: #000;
 }
-
+.navbar{
+  background-color: violet;
+}
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -235,11 +238,11 @@ sup {
 }
 
 a {
-  color: #0d6efd;
+  color: #640f59;
   text-decoration: underline;
 }
 a:hover {
-  color: #0a58ca;
+  color: #7c0e77;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {

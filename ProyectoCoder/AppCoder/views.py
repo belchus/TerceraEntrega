@@ -32,27 +32,33 @@ def Productos(request):
 
 
 def add_form(request):
-    if request.method == "ADD":
-        addproduct = AddProduct(request.Product)
+    if request.method == "POST":
+        addproduct = AddProduct(request.POST)
 
         if addproduct .is_valid():
             data = addproduct.cleaned_data
-            newProd = Product(title=data['title'],
-                            code=data['code'],
-                            price=data['price'],
-                            stock=data['stock']
+            newProd = Product(
+                title=data.get('title'),
+                code=data.get('code'),
+                            
+                price=data.get('price'),
+                stock=data.get('stock')
                             )
 
             newProd.save()
             return redirect('index')
 
+
+        else:
+            return render(request, 'productos.html', {'addprosuct': form})
+    
     addproduct = AddProduct()
-    return render(request, 'productos.html', {'add_form': addproduct})
+    return render(request, 'productos.html', {'addproduct': AddProduct})
 
 
 def order_form(request):
-    if request.method == "ADD":
-        addorder = AddOrder(request.ADD)
+    if request.method == "POST":
+        addorder = AddOrder(request.POST)
 
         if addorder.is_valid():
             data = addorder.cleaned_data
@@ -70,7 +76,7 @@ def order_form(request):
 
 def store_form(request):
     if request.method == "ADD":
-        addstore = AddStores(request.ADD)
+        addstore = AddStores(request.POST)
 
         if myStore.is_valid():
             data = myStore.cleaned_data
@@ -82,3 +88,17 @@ def store_form(request):
 
     myStore = AddStores()
     return render(request, 'sucursales.html', {'comment_form': myStore})
+
+
+def find_product(req):
+
+    if req.GET['title']:
+        isProd = req.GET['title']
+        title = title.objects.filter(title__icontains=isProd)
+
+        return render(req, 'busqueda.html', {'title': isProd})
+
+    else:
+        respuesta = "El producto no existe"
+
+    return HttpResponse(respuesta)

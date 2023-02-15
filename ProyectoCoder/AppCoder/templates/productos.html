@@ -8,12 +8,12 @@
       <form
         class="col-lg-6 col-md-12 mb-3"
         action="{% url 'add_form' %}"
-        method="ADD"
+        method="post"
       >
         {% csrf_token %}
         <input
         type="text"
-        placeholder="Ej: Fernando"
+        placeholder="Campo requerido"
         autocomplete="off"
         title = "title"
         code = "code"

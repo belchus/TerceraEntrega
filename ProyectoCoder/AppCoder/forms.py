@@ -20,3 +20,8 @@ class AddOrder(forms.Form):
     products = forms.CharField(max_length=40)
     address = forms.CharField(max_length=40)
     user = forms.CharField(max_length=40)
+
+
+class FindProduct(forms.Form):
+ title = forms.CharField()
+ 
