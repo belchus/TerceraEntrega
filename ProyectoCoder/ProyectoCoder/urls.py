@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from AppCoder.views import *
+from AppCoder import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +25,5 @@ urlpatterns = [
     path('sucursales/', Sucursales),
     path('pedidos/', Pedidos),
     path('productos/', Productos),
+    path('add_form/', add_form, name='add_form')
 ]
