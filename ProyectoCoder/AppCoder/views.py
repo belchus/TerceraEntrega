@@ -49,14 +49,14 @@ def add_form(request):
                             )
 
             newProd.save()
-            return redirect('index')
+            return redirect(inicio)
 
 
         else:
-            return render(request, 'productos.html', {'add_form': add_form})
+            return render(request, 'productos.html', {'AddProduct': AddProduct})
     
     addproduct = AddProduct()
-    return render(request, 'productos.html', {'add_form': AddProduct})
+    return render(request, 'productos.html', {'AddProduct': AddProduct})
 
 
 def order_form(request):
