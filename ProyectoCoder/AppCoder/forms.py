@@ -2,7 +2,7 @@ from django import forms
 
 class AddProduct(forms.Form):
  title = forms.CharField()
- id = forms.IntegerField()
+ code = forms.IntegerField()
  stock = forms.IntegerField()
  price = forms.IntegerField()
 
