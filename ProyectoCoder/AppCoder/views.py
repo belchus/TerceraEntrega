@@ -1,7 +1,8 @@
 from django.http import HttpResponse
 from django.template import Template,Context
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import *
+from .models import *
 
 def saludo(req):
  return HttpResponse("Hola coder")
@@ -32,14 +33,13 @@ def Productos(request):
 
 def add_form(request):
     if request.method == "ADD":
-        addproduct = AddProduct(request.ADD)
+        addproduct = AddProduct(request.Product)
 
         if addproduct .is_valid():
             data = addproduct.cleaned_data
-            newProd = Add(title=data['title'],
-                            id=data['id'],
+            newProd = Product(title=data['title'],
+                            code=data['code'],
                             price=data['price'],
-                            img=data['img'],
                             stock=data['stock']
                             )
 
