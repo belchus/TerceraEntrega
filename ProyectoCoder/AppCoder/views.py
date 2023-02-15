@@ -53,10 +53,10 @@ def add_form(request):
 
 
         else:
-            return render(request, 'productos.html', {'addprosuct': add_form})
+            return render(request, 'productos.html', {'add_form': add_form})
     
     addproduct = AddProduct()
-    return render(request, 'productos.html', {'addproduct': AddProduct})
+    return render(request, 'productos.html', {'add_form': AddProduct})
 
 
 def order_form(request):
