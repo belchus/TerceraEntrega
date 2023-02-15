@@ -30,6 +30,9 @@ def Pedidos(request):
 def Productos(request):
     return render(request, 'productos.html')
 
+def Resultados(request):
+    return render(request, 'busqueda.html')
+
 
 def add_form(request):
     if request.method == "POST":
@@ -38,11 +41,11 @@ def add_form(request):
         if addproduct .is_valid():
             data = addproduct.cleaned_data
             newProd = Product(
-                title=data.get('title'),
-                code=data.get('code'),
+                title=data['title'],
+                code=data['title'],
                             
-                price=data.get('price'),
-                stock=data.get('stock')
+                price=data['price'],
+                stock=data['stock']
                             )
 
             newProd.save()
@@ -50,7 +53,7 @@ def add_form(request):
 
 
         else:
-            return render(request, 'productos.html', {'addprosuct': form})
+            return render(request, 'productos.html', {'addprosuct': add_form})
     
     addproduct = AddProduct()
     return render(request, 'productos.html', {'addproduct': AddProduct})
@@ -75,19 +78,21 @@ def order_form(request):
 
 
 def store_form(request):
-    if request.method == "ADD":
-        addstore = AddStores(request.POST)
+    if request.method == "POST":
+        myStore = AddStores(request.POST)
 
         if myStore.is_valid():
             data = myStore.cleaned_data
-            newStore = Comment(username=data['username'],
-                                  comment=data['comment'])
+            newStore = Stores(name=data['name'],
+                             address=data['address'],
+                             phone=data['phone'],
+                              online=data['online'])
 
             newStore.save()
             return redirect('index')
 
     myStore = AddStores()
-    return render(request, 'sucursales.html', {'comment_form': myStore})
+    return render(request, 'sucursales.html', {'store_form': myStore})
 
 
 def find_product(req):
@@ -100,5 +105,19 @@ def find_product(req):
 
     else:
         respuesta = "El producto no existe"
+
+    return HttpResponse(respuesta)
+
+    
+def find_order(req):
+
+    if req.GET['number']:
+        isOrder = req.GET['number']
+        number = number.objects.filter(number__icontains=isOrder)
+
+        return render(req, 'busqueda.html', {'title': isOrder})
+
+    else:
+        respuesta = "El numero de orden buscada no existe"
 
     return HttpResponse(respuesta)

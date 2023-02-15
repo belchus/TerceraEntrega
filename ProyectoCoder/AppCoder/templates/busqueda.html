@@ -1,26 +1,27 @@
-{% extends 'index.html' %} {% block title %} Resultados de su busqueda{%endblock%}
+{% extends 'index.html' %} {% block title %} Resultados {%endblock%}
 {% block main_content %}
-    <div class="row col-lg-6 col-md-12 mb-3 container-main">
-      <h2 class="my-5">Producto: {{title}}</h2>
+<div class="container">
+    <div class="row col-lg-6 col-md-12 mb-3">
+      <h2 class="my-5">El producto buscado: {{title}}</h2>
   
-      {% if Products %}
+      {% if Product %}
       <ul class="list-group mb-3">
-        {% for Product in Products %}
+        {% for product in Product %}
         <li >
             <div class="flex-fil mb-2" >
-                <p class="my-auto"><b class="gradient">Username: </b>{{user.username}} <br>
-                    <b class="gradient">Producto </b> {{Product.title}} {{Product.price}}
+                <p class="my-auto"><b class="gradient">Producto: </b>{{p.title}} <br>
+                    <b class="gradient">Precio: </b> {{p.price}}
                 </p>
             </div>
         </li>
-        <br>
         {% endfor %}
       </ul>
+      <br>
       {% else %}
-      <span style="color: red">No se ha encontrado el usuario</span>
+      <span style="color: red">El producto buscado no existe</span>
   
       {% endif %}
     </div>
-
+  </div>
 
 {%endblock%}
