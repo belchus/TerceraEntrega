@@ -22,7 +22,7 @@ class Order(models.Model):
 
 
 class Stores(models.Model):
-    name = models.IntegerField()
+    name = models.CharField(max_length=40)
     phone= models.CharField(max_length=40)
     address = models.CharField(max_length=40)
     online = models.BooleanField()

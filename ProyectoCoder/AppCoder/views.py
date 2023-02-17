@@ -74,7 +74,7 @@ def order_form(request):
             return redirect('index')
 
     addorder = AddOrder()
-    return render(request, 'pedidos.html', {'order_form': addorder})
+    return render(request, 'pedidos.html', {'AddOrder': AddOrder})
 
 
 def store_form(request):
@@ -92,7 +92,7 @@ def store_form(request):
             return redirect('index')
 
     myStore = AddStores()
-    return render(request, 'sucursales.html', {'store_form': myStore})
+    return render(request, 'sucursales.html', {'AddStores': AddStores})
 
 
 def find_product(req):

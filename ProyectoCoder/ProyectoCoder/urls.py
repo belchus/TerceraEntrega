@@ -26,7 +26,7 @@ urlpatterns = [
     path('pedidos/', Pedidos),
     path('productos/', Productos),
     path('add_form/', add_form, name='add_form'),
-    path('order_form/', add_form, name='order_form'),
-    path('store_form/', add_form, name='store_form'),
+    path('order_form/', order_form, name='order_form'),
+    path('store_form/', store_form, name='store_form'),
     path('find_product/', add_form, name='find_product'),
 ]

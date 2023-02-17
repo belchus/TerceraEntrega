@@ -1,5 +1,5 @@
 
-{% extends 'index.html' %} {% block title %} Todos los productos {%endblock%}
+{% extends 'index.html' %} {% block title %} Ordenes de pedido {%endblock%}
 {% block main_content %}
 
 <section class="container">
@@ -15,7 +15,7 @@
   
         <form
           class="mx-5 px-3"
-          action="{% url 'add_form' %}"
+          action="{% url 'order_form' %}"
           method="POST"
         >
           {% csrf_token %}
@@ -24,7 +24,7 @@
             class="d-flex justify-content-center col-lg-6 mb-3 align-items-center"
           >
             <table>
-              {{ order_form.as_table}}
+              {{ AddOrder.as_table}}
             </table>
 
             <button
