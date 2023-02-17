@@ -30,8 +30,11 @@ def Pedidos(request):
 def Productos(request):
     return render(request, 'productos.html')
 
-def Resultados(request):
+def Busqueda(request):
     return render(request, 'busqueda.html')
+
+def Resultados(request):
+    return render(request, 'resultados.html')
 
 
 def add_form(request):
@@ -94,26 +97,24 @@ def store_form(request):
     myStore = AddStores()
     return render(request, 'sucursales.html', {'AddStores': AddStores})
 
+def find_product(request):
 
-def find_product(req):
+    if request.GET['title']:
+        title = request.GET['title']
+        products = Product.objects.filter(title=title)
 
-    if req.GET['title']:
-        isProd = req.GET['title']
-        title = title.objects.filter(title__icontains=isProd)
-
-        return render(req, 'busqueda.html', {'title': isProd})
+        return render(request, 'resultados.html', {'products': products, 'title': title})
 
     else:
         respuesta = "El producto no existe"
 
     return HttpResponse(respuesta)
-
     
 def find_order(req):
 
     if req.GET['number']:
         isOrder = req.GET['number']
-        number = number.objects.filter(number__icontains=isOrder)
+        number = FindProduct.objects.filter(number__icontains=isOrder)
 
         return render(req, 'busqueda.html', {'title': isOrder})
 
