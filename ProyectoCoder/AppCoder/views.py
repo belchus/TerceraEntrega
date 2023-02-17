@@ -101,7 +101,7 @@ def find_product(request):
 
     if request.GET['title']:
         title = request.GET['title']
-        products = Product.objects.filter(title=title)
+        products = Product.objects.filter(title__icontains=title)
 
         return render(request, 'resultados.html', {'products': products, 'title': title})
 
