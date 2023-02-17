@@ -45,7 +45,7 @@ def add_form(request):
             data = addproduct.cleaned_data
             newProd = Product(
                 title=data['title'],
-                code=data['title'],
+                code=data['code'],
                             
                 price=data['price'],
                 stock=data['stock']
