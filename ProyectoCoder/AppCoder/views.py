@@ -37,6 +37,10 @@ def Resultados(request):
     return render(request, 'resultados.html')
 
 
+def Resultados2(request):
+    return render(request, 'resultados-or.html')
+
+#Formulario para agregar un producto a nuestra base de datos
 def add_form(request):
     if request.method == "POST":
         addproduct = AddProduct(request.POST)
@@ -53,6 +57,7 @@ def add_form(request):
 
             newProd.save()
             return redirect(inicio)
+            
 
 
         else:
@@ -62,6 +67,9 @@ def add_form(request):
     return render(request, 'productos.html', {'AddProduct': AddProduct})
 
 
+
+#Formulario para agregar una orden  a nuestra base de datos
+
 def order_form(request):
     if request.method == "POST":
         addorder = AddOrder(request.POST)
@@ -70,15 +78,17 @@ def order_form(request):
             data = addorder.cleaned_data
             newOrder = Order(number=data['number'],
                             address=data['address'],
-                            products=data['products'],
-                            user=data['user'])
+                            products=data['products'])
 
             newOrder.save()
-            return redirect('index')
+            return redirect(inicio)
+        else:
+            return render(request, 'pedidos.html', {'AddOrder': AddOrder})    
 
     addorder = AddOrder()
     return render(request, 'pedidos.html', {'AddOrder': AddOrder})
 
+#Formulario para agregar una tienda a nuestra base de datos
 
 def store_form(request):
     if request.method == "POST":
@@ -92,10 +102,12 @@ def store_form(request):
                               online=data['online'])
 
             newStore.save()
-            return redirect('index')
+            return redirect(inicio)
 
     myStore = AddStores()
     return render(request, 'sucursales.html', {'AddStores': AddStores})
+
+#Formulario para buscar un producto en nuestra base de datos    
 
 def find_product(request):
 
@@ -110,13 +122,15 @@ def find_product(request):
 
     return HttpResponse(respuesta)
     
+#Formulario para buscar una orden de pedido en nuestra base de datos 
+
 def find_order(req):
 
     if req.GET['number']:
-        isOrder = req.GET['number']
-        number = FindProduct.objects.filter(number__icontains=isOrder)
+        number = req.GET['number']
+        orders = Order.objects.filter(number__icontains=number)
 
-        return render(req, 'busqueda.html', {'title': isOrder})
+        return render(req, 'resultados-or.html', {'orders': orders, 'number':number})
 
     else:
         respuesta = "El numero de orden buscada no existe"

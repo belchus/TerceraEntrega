@@ -28,7 +28,9 @@ urlpatterns = [
     path('add_form/', add_form, name='add_form'),
     path('order_form/', order_form, name='order_form'),
     path('store_form/', store_form, name='store_form'),
+    path('find_order/', views.find_order, name='find_order'),
     path('find_product/', find_product, name='find_product'),
     path('resultados/',Resultados,name='resultados'),
+    path('resultados-or/',views.Resultados2,name='resultados2'),
     path('AppCoder/', include('AppCoder.urls')),
 ]
