@@ -1,28 +1,33 @@
 from django.db import models
+from django.contrib.auth.models import User as UserAuth
 
-class Product(models.Model):
-  title =models.CharField(max_length=50)
-  code = models.IntegerField()
-  price =models.CharField(max_length=50)
-  stock =models.IntegerField()
-
-
-
-class Client(models.Model):
-    name = models.CharField(max_length=40)
+class User(models.Model):
     user = models.CharField(max_length=40)
-    email = models.EmailField()
-    phone = models.IntegerField()
-
-
-class Order(models.Model):
-    number = models.IntegerField()
-    products = models.CharField(max_length=40)
-    address = models.CharField(max_length=40)
-
-
-class Stores(models.Model):
     name = models.CharField(max_length=40)
-    phone= models.CharField(max_length=40)
-    address = models.CharField(max_length=40)
-    online = models.BooleanField()
+    rol= models.CharField(max_length=40)
+    email = models.EmailField()
+    avatar = models.CharField(max_length= 250)
+
+
+class Movie(models.Model):
+    title =  models.CharField(max_length=40)
+    img =  models.ImageField()
+    description = models.CharField(max_length=500)
+    tag = models.CharField(max_length=40)
+
+
+class Review(models.Model):
+    title =  models.CharField(max_length=40)
+    text = models.CharField(max_length=200)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    stars = models.IntegerField()
+def __str__(self):
+        return f'Review de MovieUser: {self.user}'
+
+class Avatar(models.Model):
+    user = models.OneToOneField(UserAuth, on_delete= models.CASCADE)
+    image = models.ImageField(upload_to='avatars', null=True, blank=True)
+
+    def __srt__(self):
+        return self.user.user

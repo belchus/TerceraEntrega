@@ -17,14 +17,20 @@
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     </head>
     <body>
+        <div class="container2">
+            <a href="/login/">Login</a>
+    
+        </div>
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
-                <a class="navbar-brand" href="/">Home</a>
-                <a href="/add_form">Productos</a>
-                <a href="/order_form/">Pedidos</a>
-                <a href="/store_form/">Sucursales</a>
+                <a class="navbar-brand" href="/">About Me</a>
+                <a href="/add_form">Movies</a>
+                <a href="/fav_form/">Mi Lista</a>
+                <a href="/all_reviews/">MovieReviews</a>
                 <a href="/busqueda/">Buscar</a>
+                <a href="/edit-profile/">Mi perfil</a>
+                
             </div>
         </nav>
         <!-- Masthead-->
@@ -34,29 +40,47 @@
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5">Moon Accesorios</h1>
+                            <h1 class="mb-5">MovieApp</h1>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <!-- Icons Grid-->
-        <section class="features-icons bg-light text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Hola,somos MoonAccesorios</h1>
-                    </div>
-                </div>
-            </div>
-        </section>
         {% block title %}
                                 
         {% endblock %}
      
          {% block main_content %}
-                                     
+         <div class="" style="width: 70%; margin: auto">
+            <section>
+              <h1 class="title">
+                Bienvenidos a MovieApp
+              </h1>
+          
+              <article>
+                <p class="parrafo">
+                  Mi nombre es Camila Arena  tengo 23 años y soy estudiante de licenciatura en  informatica en la UNQ
+                </p>
+                <p class="parrafo">
+                  Mi proyecto intenta ser una app parecida a LetterBoxd es por eso que me base en ella para la creacion de mi app.
+                </p>
+                <p lass="parrafo">
+                 Dentro de esta misma la idea es que el administrador solamente pueda agregar nuevas peliculas para que los usuarios puedan dejar su reseña de la misma.
+                 Los demas usuarios tambien pueden ver las reseñas de las peliculas y contestarlas .
+                 Por ultimo cuenta con una seccion para buscar las peliculas disponibles en la app.
+                </p>
+          
+                <p class="parrafo">
+                 Tambien tiene una seccion para editar tu avatar
+                </p>
+ 
+              </article>
+          
+            </section>
+          </div>
          {% endblock %}
+        <!-- Icons Grid-->
+      
         <!-- Footer-->
         <footer class="footer bg-light">
             <div class="container">

@@ -17,20 +17,26 @@ from django.contrib import admin
 from django.urls import include, path
 from AppCoder.views import *
 from AppCoder import views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicio),
+    path('movies/', views.Movies),
+    path('add_form/', views.add_form, name='add_form'),
+    path('favorite/', views.Movies),
+    path('fav_form/', views.fav_form, name='fav_form'),
+    path('reviews/', views.Reviews),
+    path('review_form/', views.review_form, name='review_form'),
+    path('find_movie/', views.find_movie, name='find_movie'),
+    path('resultados/',views.Resultados,name='resultados'),
     path('busqueda/',views.Busqueda),
-    path('sucursales/', views.Sucursales),
-    path('pedidos/', views.Pedidos),
-    path('productos/', views.Productos),
-    path('add_form/', add_form, name='add_form'),
-    path('order_form/', order_form, name='order_form'),
-    path('store_form/', store_form, name='store_form'),
-    path('find_order/', views.find_order, name='find_order'),
-    path('find_product/', find_product, name='find_product'),
-    path('resultados/',Resultados,name='resultados'),
-    path('resultados-or/',views.Resultados2,name='resultados2'),
-    path('AppCoder/', include('AppCoder.urls')),
+    path('login/',views.login_request),
+    path('register/',views.register, name="register"),
+    path('logout/',LogoutView.as_view(template_name='logout.html'), name="logout"),
+    path('all_reviews/', views.Reviews),
+    path('edit-profile/', views.edit_profile, name ='edit-profile'),
+    path('edit-avatar/', views.create_avatar, name ='edit-avatar'),
+
+
 ]

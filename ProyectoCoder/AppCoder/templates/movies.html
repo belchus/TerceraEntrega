@@ -1,10 +1,10 @@
-{% extends 'index.html' %} {% block title %} Todos los productos {%endblock%}
+{% extends 'index.html' %} {% block title %} Todos los movies {%endblock%}
 {% block main_content %}
 
 <section class="container">
     <div class="row">
       <div class="col-lg-6">
-        <h2 class="my-5">Agregar un nuevo producto</h2>
+        <h2 class="my-5">Agregar una nueva pelicula</h2>
   
         {% if add_form.errors %}
         <span style="color: red"
@@ -23,7 +23,7 @@
             class="d-flex justify-content-center col-lg-6 mb-3 align-items-center"
           >
             <table>
-              {{ AddProduct.as_table}}
+              {{ AddMovie.as_table}}
             </table>
 
             <button
